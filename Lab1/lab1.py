@@ -141,6 +141,6 @@ def ex_10():
     input_string = input("String:")
     print(len(input_string.split(" ")))
 
-
+ex_8()
 
 
