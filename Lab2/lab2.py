@@ -89,6 +89,132 @@ def ex_5():
 
     functie_ex5(matrix)
 
+def ex_6():
+
+    x=2
+    #list = [1,2,3], [2,3,4],[4,5,6], [4,1, "test"]
+    def functie_ex6(x,*args):
+        elements = []
+        for arg in args:
+            elements = elements + arg
+        
+        from collections import Counter
+        frecventa = Counter(elements)
+        raspuns = []
+        for i in range(len(elements)):
+            if frecventa[i] == 2:
+                raspuns.append(i)
+        return raspuns
+    print(functie_ex6(2,[1,2,3], [2,3,4],[4,5,6], [4,1, "test"]))
+
+def ex_7():
+    n = int(input("n:"))
+    nr_list = []
+    for i in range(n):
+        nr_list.append(int(input("nr:")))
+
+    def palindrom(n):
+        n = str(n)
+        palindrom = 1
+        for i in range(int(len(n)/2)):
+            if not n[i] == n[len(n)-i-1]:
+                palindrom = 0
+
+        if palindrom:
+            return True
+        else:
+            return False
+    
+    def functie_ex7(nr_list):
+        cmm = 0
+        count = 0
+        sorted(nr_list, reverse=True)
+        for i in range(n):
+            if(palindrom(nr_list[i])):
+                count=count+1
+                cmm = nr_list[i]
+        
+        a = (count,cmm)
+        return a
+    
+    print(functie_ex7(nr_list))
+
+def ex_8():
+    x = int(input("x:"))
+    strings = ["test", "hello", "lab002"]
+    flag = False
+    raspuns = []
+    for string in strings:
+        caractere = []
+        for c in string:
+            if ord(c)%x == 0:
+                if(flag == True):
+                    caractere.append(c)
+            elif flag == False:
+                caractere.append(c)
+        raspuns.append(caractere)
+    
+    print(raspuns)
+
+def ex_9():
+    stadion = [[1, 2, 3, 2, 1, 1],[2, 4, 4, 3, 7, 2],[5, 5, 2, 5, 6, 4],[6, 6, 7, 6, 7, 5]]
+    def functie_ex9(stadion):
+        scunzi = []
+        for i in range(len(stadion)):
+            for j in range(len(stadion[0])):
+                for k in reversed(range(0, i)):
+                    if(stadion[i][j]<=stadion[k][j]):
+                        #print(i,j,k)
+                        tuplu = (i,j)
+                        scunzi.append(tuplu)
+                        break
+        return scunzi
+    print(functie_ex9(stadion))
+
+def ex_10(*args):
+    list = []
+    #ex_10([1,2,3], [5,6,7], ["a", "b", "c"])
+    for i in range(len(args[0])):
+        tuplu = []
+        for j in range(len(args)):
+            tuplu.append(args[j][i])
+        tuplu = tuple(tuplu)
+        list.append(tuplu)
+    print(list)
+
+
+def ex_11():
+    lista = [('abc', 'bcd'), ('abc', 'zza')]
+    dictionar = {}
+    for tupla in lista:
+        dictionar[tupla] = tupla[1][2]
+    
+    dictionar = sorted(dictionar.items(), key=lambda item: item[1])
+    print(list(dict(dictionar).keys()))
+
+def ex_12():
+    from collections import defaultdict
+    lista = ['ana', 'banana', 'carte', 'arme', 'parte']
+    dictionar = defaultdict(list)
+    for string in lista:
+        dictionar[string[-2:]].append(string)
+    
+    raspuns = []
+    for key in dictionar.keys():
+        raspuns.append(dictionar[key])
+    
+    print(raspuns)
+
+print("serban"[1:])
+    
+    
+
+
+
+
+
+    
+
 
 
 
