@@ -78,13 +78,13 @@ def ex_4():
 
 def ex_5():
     n = int(input("n:"))
-    matrix = [[1 for i in range(n)] for j in range(n)]
+    matrix = [[0 for i in range(n)] for j in range(n)]
 
     def functie_ex5(matrix):
         for i in range(n):
             for j in range(n):
-                if i == j:
-                    matrix[i][j] = 0
+                if i < j:
+                    matrix[i][j] = 1
         print(matrix)
 
     functie_ex5(matrix)
@@ -174,12 +174,22 @@ def ex_9():
 def ex_10(*args):
     list = []
     #ex_10([1,2,3], [5,6,7], ["a", "b", "c"])
-    for i in range(len(args[0])):
+    maxime = []
+    for arg in args:
+        maxime.append(len(arg))
+    maxim = max(maxime)
+
+    for arg in args:
+        for i in range(len(arg),maxim):
+            arg.append(None)
+
+    print(args)
+    index = 0
+    for i in range(maxim):
         tuplu = []
         for j in range(len(args)):
             tuplu.append(args[j][i])
-        tuplu = tuple(tuplu)
-        list.append(tuplu)
+        list.append(tuple(tuplu))
     print(list)
 
 
@@ -205,7 +215,10 @@ def ex_12():
     
     print(raspuns)
 
-print("serban"[1:])
+ex_5()
+
+ex_10([1,2,3], [5,6,7], ["a", "b", "c","d","e"])
+
     
     
 
