@@ -63,17 +63,17 @@ def ex_3():
 
 def ex_4():
 
-    def build_xml_element(tag, content, dictionary):
+    def build_xml_element(tag, content, **kwargs):
         line = "<" + tag
-        for key in dictionary:
-            line = line + " " + key + "=\"" + dictionary[key] + "\""
+        for key,value in kwargs.items():
+            line = line + " " + key + "=\"" + value + "\""
         line = line + ">"
 
         line = line + content + "</" + tag + ">"
 
         return line
     
-    print(build_xml_element("a", "Hello there", {"href": "http://python.org", "class": "my-link", "id":"someid"}))
+    print(build_xml_element("a", "Hello there", href = "http://python.org", _class= "my-link", id = "someid"))
 
 def ex_5():
 
@@ -182,14 +182,19 @@ def ex_8():
 def ex_9():
 
     #1, 2, 3, 4, {"x":1, "y":2, "z":3, "w":5}
-    def functie_ex9(dict,*args):
+    def functie_ex9(*args,**kwargs):
         count = 0
+        values = []
+        for key,value in kwargs.items():
+            values.append(value)
         for arg in args:
-            if list(dict.values()).count(arg)!=0:
+            if values.count(arg)!=0:
                 count+=1
         return count
     
-    print(functie_ex9({"x":1, "y":2, "z":3, "w":5}, 1, 2, 3, 4))
+    print(functie_ex9(1, 2, 3, 4, x=1, y=2, z=3, w=5))
+
+ex_9()
 
 
 
