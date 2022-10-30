@@ -1,0 +1,6 @@
+F:\Git\repos\Python\lab4\A.txt
+F:\Git\repos\Python\lab4\Abc.txt
+F:\Git\repos\Python\lab4\A.txt
+F:\Git\repos\Python\lab4\Abc.txt
+F:\Git\repos\Python\lab4\A.txt
+F:\Git\repos\Python\lab4\Abc.txt
