@@ -7,14 +7,17 @@ def ex_1():
     def functie_ex1(dir):
         dict = {}
         for file in os.listdir(dir):
-            split_text = file.split(".")
-            dict[split_text[0]] = split_text[1]
+            if os.path.isfile(file):
+                split_text = file.split(".")
+                dict[split_text[0]] = split_text[1]
         sort = {k: v for k, v in sorted(dict.items(), key=lambda item: item[1])}
         sort = set(sort.values())
+        sort = sorted(sort)
         for val in sort:
             print(val)
     
     functie_ex1(".")
+
 
 def ex_2():
 
@@ -28,7 +31,6 @@ def ex_2():
     
     functie_ex2(".","ex2.txt")
 
-ex_2()
 
 def ex_3():
 
@@ -38,7 +40,7 @@ def ex_3():
             data = f.read().replace('\n','')
             data = data[len(data)-20:]
             f.close()
-            print(len(data))
+            print(data)
         elif os.path.isdir(my_path):
             dict = {}
             for root, subdirs, files in os.walk(my_path):
@@ -52,9 +54,10 @@ def ex_3():
             for key,value in dict.items():
                 print((key,value))
     
-    functie_ex3("F:\\Git\\repos\\Python\\lab4\\ex3.txt")
-    functie_ex3("F:\\Git\\repos\\Python\\lab4")
+    functie_ex3("D:\\Python\\lab4\\ex3.txt")
+    functie_ex3("D:\\Python\\lab4")
 
+ex_3()
 
 def ex_4():
     def functie_ex4():
@@ -68,6 +71,7 @@ def ex_4():
         return list
     
     print(functie_ex4())
+
 
 def ex_5():
     def functie_ex5(target,to_search):
@@ -96,7 +100,9 @@ def ex_5():
 
     #print(functie_ex5("???",">???"))
     print(functie_ex5("ex5.txt","wanted"))
-    print(functie_ex5("F:\\Git\\repos\\Python\\lab4","wanted"))
+    print(functie_ex5("D:\\Python\\lab4","wanted"))
+
+
 
 def ex_6():
 
@@ -131,6 +137,7 @@ def ex_6():
     print(functie_ex6("ex5.txt","wanted",callback))
     print(functie_ex6("F:\\Git\\repos\\Python\\lab4","wanted",callback))
 
+
 def ex_7():
 
     def functie_ex7(path):
@@ -146,7 +153,9 @@ def ex_7():
         dict['can_write'] = os.access(path, os.W_OK)
         return dict
     
-    print(functie_ex7("randomtext.txt"))
+    print(functie_ex7("readonly.txt"))
+
+ex_7()
 
 def ex_8():
 
@@ -161,6 +170,7 @@ def ex_8():
     print(functie_ex8("."))
 
 ex_8()
+
 
 
 
