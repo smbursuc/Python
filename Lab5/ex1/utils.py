@@ -19,4 +19,6 @@ def process_item(nr):
             found = 1
         else:
             nr+=1
-        
+
+if __name__ == "__main__":
+    process_item(int(input("Give number:")))
