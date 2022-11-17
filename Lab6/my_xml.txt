@@ -1,0 +1,4 @@
+<partial class="python" name="python">
+    <racit data-id="da">DA</racit>
+    <pregatit data-id="nu">NU</pregatit>
+</partial>
