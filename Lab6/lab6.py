@@ -4,7 +4,6 @@ import os
 def ex_1():
 
     def functie_ex1(text):
-        # Regex that checks if the string is a sentence
         regex = "^([A-Za-z0-9]+ [A-Za-z0-9]+)+$"
         r = re.compile(regex)
         #print(exrex.getone(regex))
@@ -31,22 +30,20 @@ def ex_2():
     print(functie_ex2("hello l99tle world","[0-9][0-9]",2))
 
 
-#??????????????????????????????????????????????
 def ex_3():
 
-    def functie_ex3(string,regex_list):
+    def functie_ex3(string_list,regex_list):
         result = []
-        for s in string:
-            already_added = 0
+        for string in string_list:
             for regex in regex_list:
                 r = re.compile(regex)
-                if r.match(s):
-                    if(already_added == 0):
-                        result.append(s)
-                        already_added = 1
+                if r.match(string):
+                    result.append(string)
+                    break
         return result
 
-    print(functie_ex3())
+    print(functie_ex3(["ana","n-are","mere"],["^[a-zA-Z]+$"]))
+
 
 def ex_4():
 
