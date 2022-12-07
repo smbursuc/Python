@@ -1,4 +1,4 @@
-<partial class="python" xd="true" name="python">
+<partial class="python" xd="true">
     <racit data-id="da">DA</racit>
     <pregatit data-id="nu">NU</pregatit>
 </partial>

@@ -4,17 +4,14 @@ import os
 def ex_1():
 
     def functie_ex1(text):
-        regex = "^([A-Za-z0-9]+ [A-Za-z0-9]+)+$"
-        r = re.compile(regex)
-        #print(exrex.getone(regex))
-        if r.match(text):
-            print("Este propozitie")
-        else:
-            print("Nu este propozitie")
+        words = re.findall("\w+", text)
+        print(words)
             
         
     
     functie_ex1("hello19 20 world")
+
+ex_1()
 
 def ex_2():
 
@@ -100,9 +97,9 @@ def ex_6():
                 cenzurat += text[i]
         return cenzurat
     def functie_ex6(text):
-        print(re.sub('[aeiouAEIOU][a-zA-Z0-9][aeiouAEIOU]', censor, text))
+        print(re.sub('[aeiouAEIOU][a-zA-Z0-9]*[aeiouAEIOU]', censor, text))
     
-    functie_ex6("hello world ana are")
+    functie_ex6("hello world anasdasdasdaasda ea are")
 
 def ex_7():
 
@@ -112,12 +109,32 @@ def ex_7():
         r = re.compile(regex)
         print(exrex.getone(regex))
         if r.match(cnp):
-            print("CNP valid")
+            print("CNP valid dupa regex")
         else:
-            print("CNP invalid")
+            print("CNP invalid dupa regex")
+        
+        c = "279146358279"
 
-    functie_ex7("1971027265798")
+        sum = 0
+        for i in range(12):
+            sum+= int(cnp[i])*int(c[i])
+        
+        if sum % 11 < 10:
+            if sum % 11 == int(cnp[len(cnp)-1]):
+                print("CNP valid dupa algoritm")
+        elif sum % 11 == 10:
+            if int(cnp[len(cnp)-1]) == 1:
+                print("CNP valid dupa algoritm")
 
+
+        
+
+
+
+    functie_ex7("9960902269613")
+
+
+#
 def ex_8():
 
     def generate_substrings(string):
@@ -130,19 +147,25 @@ def ex_8():
     def functie_ex8(dir,regex):
         result = []
         for dirs, subdirs, root in os.walk(dir):
-            for file in root:
-                file = file.split('.')[0]
-                substrings = generate_substrings(file)
-                found = 0 
-                for substring in substrings:
-                    r = re.compile(regex)
-                    if r.match(substring):
-                        found=1
-                        print(">> " + file)
-                        break
-                if found == 0:
+            for full_file in root:
+                file = full_file.split('.')[0]
+                r = re.compile(regex)
+                file_matched = 0
+                file_text_matched = 0
+                if r.match(file):
+                    file_matched = 1
+                f = open(os.path.join(dirs,full_file),'r')
+                data = f.read().splitlines()
+                for line in data:
+                    search = re.findall(regex, line)
+                    if len(search)>0:
+                        file_text_matched = 1
+                f.close()
+                if file_matched == 1 and file_text_matched == 1:
+                    print(">> " + file)
+                elif file_matched == 1 or file_text_matched == 1:
                     print(file)
+                
     functie_ex8(".",'^([a-zA-Z0-9]+_[a-zA-Z0-9]+)$')
-
 
 ex_8()
